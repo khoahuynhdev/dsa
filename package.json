@@ -1,0 +1,14 @@
+{
+  "name": "data-strutures-and-algorithms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "ts-node": "^9.1.0",
+    "typescript": "^4.1.2"
+  },
+  "scripts": {
+    "tn": "ts-node"
+  }
+}

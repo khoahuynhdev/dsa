@@ -83,6 +83,23 @@ class HashMap<K extends String,V> {
   }
 
   // remove (key: K)
+  remove (key: K): V | undefined {
+    const index = this.getBucketIndex(key)
+    let head: HashNode<K, V> | undefined = this.bucketArray[index];
+    let prev: HashNode<K, V> | undefined = undefined;
+    while (head) {
+      if (head.key === key) break;
+      prev = head;
+      head = head.next;
+    }
+    if (!head) return undefined;
+    this.bucketSize--;
+    if (prev)
+      prev.next = head.next;
+    else
+      this.bucketArray.splice(index, 1);
+    return head.value;
+  }
 }
 
 const hashtable = new HashMap<String, Number>();
@@ -90,4 +107,8 @@ hashtable.add('hello', 100);
 hashtable.add('world', 1000);
 console.log(hashtable.getValue('hello'))
 console.log(hashtable.getValue('world'))
-console.log(hashtable.getValue('none'))
+console.log(hashtable.bucketSize)
+hashtable.remove('hello');
+console.log(hashtable.getValue('hello'))
+console.log(hashtable.bucketSize)
+console.log(hashtable.getValue('world'))

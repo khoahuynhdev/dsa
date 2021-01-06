@@ -100,6 +100,8 @@ class HashMap<K extends String,V> {
       this.bucketArray.splice(index, 1);
     return head.value;
   }
+
+  // @TODO: implement linear probling hashtable
 }
 
 const hashtable = new HashMap<String, Number>();
